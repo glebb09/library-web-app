@@ -13,7 +13,16 @@ const Book = sequelize.define('books', BookType);
 const Genre = sequelize.define('genres', GenreType);
 
 Genre.belongsToMany(Book, { through: "genres_books" });
+Book.belongsToMany(Genre, { through: "genres_books" });
+
 Book.belongsToMany(Author, { through: "books_authors" });
+Author.belongsToMany(Book, { through: "books_authors" });
+
+Order.hasMany(User);
+User.belongsTo(Order);
+
+Order.hasMany(Book);
+Book.belongsTo(Order);
 
 sequelize.sync({ force: true });
 
