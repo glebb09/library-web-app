@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.send("authors");
-});
+const { getAuthors } = require('../controllers/authors');
+
+router.get('/', getAuthors);
 
 router.post('/', (req, res) => {
   res.send("Create authors");

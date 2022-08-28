@@ -24,7 +24,7 @@ User.belongsTo(Order);
 Order.hasMany(Book);
 Book.belongsTo(Order);
 
-sequelize.sync({ force: true });
+sequelize.sync();
 
 module.exports = { 
   Author, 

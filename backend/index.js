@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 
-const routes = require('./api/v1');
+const routes = require('./api/v1/routes');
 require('./db');
 require('./models');
 

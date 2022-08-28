@@ -1,12 +1,4 @@
-const Author = require('../../models/Author');
-
-const authorsDao = {
-  findAll: findAll,
-  create: create,
-  findById: findById,
-  deleteById: deleteById,
-  updateAuthor: updateAuthor
-};
+const { Author } = require('../models');
 
 const findAll = () => {
   return Author.findAll();
@@ -35,4 +27,10 @@ const updateAuthor = ( author, id) => {
   return Author.update(updAuthor, { where: { id: id} });
 }
 
-module.exports = authorsDao;
+module.exports = {
+  findAll,
+  findById,
+  deleteById,
+  create,
+  updateAuthor
+};
