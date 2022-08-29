@@ -18,7 +18,7 @@ const Book = {
   },
 
   pages_count: {
-    type: DataTypes.DATE,
+    type: DataTypes.INTEGER,
     allowNull: false
   }
 }
