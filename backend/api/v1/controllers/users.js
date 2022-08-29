@@ -13,11 +13,12 @@ const createUser = async (req, res) => {
 }
 
 const updUser = async (req, res) => {
-  res.send( await updateUser(req.body, req.params.id));
+  res.send( await updateUser(req.body, +req.params.id));
 }
 
 const deleteUserById = async(req, res) => {
-  res.send( await deleteUser(req.params.id));
+  const result =  await deleteUser(+req.params.id);
+  res.send(result == 0 ? 204 : 200);
 }
 
 module.exports = {

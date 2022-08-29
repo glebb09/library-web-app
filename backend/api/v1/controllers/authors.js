@@ -13,11 +13,12 @@ const createAuthor = async (req, res) => {
 }
 
 const updAuthor = async (req, res) => {
-  res.send( await updateAuthor(req.body, req.params.id));
+  res.send( await updateAuthor(req.body, +req.params.id));
 }
 
 const deleteAuthorById = async(req, res) => {
-  res.send( await deleteById(req.params.id));
+  const result = await deleteById(+req.params.id);
+  res.sendStatus(result == 0 ? 204 : 200);
 }
 
 module.exports = {

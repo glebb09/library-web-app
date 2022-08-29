@@ -20,7 +20,7 @@ const updateOrder = ( order, id ) => {
     note: order.note
   };
 
-  return Order.updOrder( updOrder, { where: { id: id }});
+  return Order.update( updOrder, { where: { id: id }});
 };
 
 const deleteOrder = ( id ) => {

@@ -13,11 +13,12 @@ const createGenre = async (req, res) => {
 };
 
 const updGenre = async (req, res) => {
-  res.send( await updateGenre(req.body, req.params.id));
+  res.send( await updateGenre(req.body, +req.params.id));
 };
 
 const deleteGenreById = async (req, res) => {
-  res.send( await deleteGenre(req.params.id));
+  const result = await deleteGenre(+req.params.id);
+  res.sendStatus(result == 0 ? 204 : 200);
 };
 
 module.exports = {
@@ -25,5 +26,5 @@ module.exports = {
   getGenreById,
   createGenre,
   updGenre,
-  deleteGenre
+  deleteGenreById
 };

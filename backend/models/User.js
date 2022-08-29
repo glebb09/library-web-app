@@ -1,4 +1,4 @@
-const { DataTypes, Model } = require('sequelize');
+const { DataTypes } = require('sequelize');
 
 const User = {
 
@@ -43,7 +43,7 @@ const User = {
   },
 
   last_login_date: {
-    type: DataTypes.STRING,
+    type: DataTypes.DATE,
     allowNull: false
   }
 };

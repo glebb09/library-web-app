@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const { getOrders, getOrderById, createOrder, updOrder, deleteOrder } = require('../controllers/orders');
+const { getOrders, getOrderById, createOrder, updOrder, deleteOrderById } = require('../controllers/orders');
 
 router.get('/', getOrders);
 
@@ -10,6 +10,6 @@ router.post('/', createOrder);
 
 router.patch('/:id', updOrder);
 
-router.delete('/:id', deleteOrder);
+router.delete('/:id', deleteOrderById);
 
 module.exports = router;

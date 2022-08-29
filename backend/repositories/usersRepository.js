@@ -21,8 +21,7 @@ const updateUser = ( user, id ) => {
     email: user.email,
     password: user.password,
     role: user.role,
-    email_confirm_hash: user.email_confirm_hash,                //this
-    registration_date: user.registration_date,                  //this
+    email_confirm_hash: user.email_confirm_hash,                
     last_login_date: user.last_login_date
   };
 

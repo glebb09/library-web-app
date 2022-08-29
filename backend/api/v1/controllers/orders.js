@@ -5,7 +5,7 @@ const getOrders = async (req, res) => {
 }
 
 const getOrderById = async (req, res) => {
-  res.send( await findById(res.params.id));
+  res.send( await findById(req.params.id));
 };
 
 const createOrder = async ( req, res ) => {
@@ -13,11 +13,12 @@ const createOrder = async ( req, res ) => {
 };
 
 const updOrder = async (req, res) => {
-  res.send( await updateOrder(req.body, req.params.id));
+  res.send( await updateOrder(req.body, +req.params.id));
 };
 
 const deleteOrderById = async (req, res) => {
-  res.send( await deleteOrder(req.params.id));
+  const result = await deleteOrder(+req.params.id);
+  res.send(result == 0 ? 204 : 200);
 };
 
 module.exports = {
@@ -25,5 +26,5 @@ module.exports = {
   getOrderById,
   createOrder, 
   updOrder,
-  deleteOrder
+  deleteOrderById
 };

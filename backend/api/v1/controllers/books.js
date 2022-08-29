@@ -13,11 +13,12 @@ const createBook = async (req, res) => {
 };
 
 const updBook = async (req, res) => {
-  res.send( await updateBook(req.body, req.params.id));
+  res.send( await updateBook(req.body, +req.params.id));
 };
 
 const deleteBookById = async (req, res) => {
-  res.send( await deleteBook(req.params.id));
+  const result = await deleteBook(+req.params.id);
+  res.send(result == 0 ? 204 : 200);
 };
 
 module.exports = {

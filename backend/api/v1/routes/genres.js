@@ -1,15 +1,15 @@
 const router = require('express').Router();
 
-const { getBook, getBookById, createBook, updBook, deleteBookById } = require('../controllers/books');
+const { getGenres, getGenreById, createGenre, updGenre, deleteGenreById } = require('../controllers/genres');
 
-router.get('/', getBook);
+router.get('/', getGenres);
 
-router.get('/:id', getBookById);
+router.get('/:id', getGenreById);
 
-router.post('/', createBook);
+router.post('/', createGenre);
 
-router.patch('/:id', updBook);
+router.patch('/:id', updGenre);
 
-router.delete('/:id', deleteBookById);
+router.delete('/:id', deleteGenreById);
 
 module.exports = router;
