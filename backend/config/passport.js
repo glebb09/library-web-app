@@ -8,7 +8,7 @@ const { User } = require('../models');
 
 const jwtOptions = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-  secretOrKey:  process.env.JWT_SECRET || "vmmdmcmdcmdcmdmzadqddfvbeko",
+  secretOrKey:  process.env.JWT_SECRET,
   passReqToCallback: true,
 };
 
