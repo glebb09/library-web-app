@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const { getAuthors, getAuthorById, createAuthor, updAuthor, deleteAuthorById } = require('../controllers/authors');
+const { getAuthors, getAuthorById, createAuthor, updAuthor, deleteAuthorById } = require('../controllers/authors.controller');
 const { isAuthenticated } = require('../../../config/passport');
 
 router.get('/', getAuthors);

@@ -1,4 +1,4 @@
-const { findAll, findById, create, updateOrder, deleteOrder } = require('../../../repositories/ordersRepository');
+const { findAll, findById, create, updateOrder, deleteOrder } = require('../../../repositories/orders.repository');
 
 const getOrders = async (req, res) => {
   res.send( await findAll());

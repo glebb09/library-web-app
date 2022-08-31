@@ -1,7 +1,7 @@
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 
-const { findAll, findById, findByEmail, create, updateUser, deleteUser } = require('../../../repositories/usersRepository');
+const { findAll, findById, findByEmail, create, updateUser, deleteUser } = require('../../../repositories/users.repository');
 const { json } = require('body-parser');
 
 const getUsers = async (req, res) => {

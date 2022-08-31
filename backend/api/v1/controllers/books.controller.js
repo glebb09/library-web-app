@@ -1,4 +1,4 @@
-const { findAll, findById, create, updateBook, deleteBook } = require('../../../repositories/booksRepository'); 
+const { findAll, findById, create, updateBook, deleteBook } = require('../../../repositories/books.repository'); 
 
 const getBook = async ( req, res ) => {
   res.send( await findAll());

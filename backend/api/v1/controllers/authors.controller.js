@@ -1,4 +1,4 @@
-const { findAll, findById, create, updateAuthor, deleteById } = require('../../../repositories/authorsRepository');
+const { findAll, findById, create, updateAuthor, deleteById } = require('../../../repositories/authors.repository');
 
 const getAuthors = async (req, res) => {
   res.send( await findAll());

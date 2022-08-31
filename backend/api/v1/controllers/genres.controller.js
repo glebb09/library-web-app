@@ -1,4 +1,4 @@
-const { findAll, findById, create, updateGenre, deleteGenre } = require('../../../repositories/genresRepository');
+const { findAll, findById, create, updateGenre, deleteGenre } = require('../../../repositories/genres.repository');
 
 const getGenres = async (req, res) => {
   res.send( await findAll());
