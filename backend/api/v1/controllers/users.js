@@ -29,22 +29,28 @@ const deleteUserById = async(req, res) => {
   res.send(result == 0 ? 204 : 200);
 }
 
-const loginUser = async (req, res) => [
-  passport.authenticate('login', async (err, user) => {
-    if ( err || !user ) { throw Error('An error occurred.') };
-
-    req.login(req.email, req.password, { session: false }, async (error) => {
-      if (error) return next(error);
-
-      const body = { _id: user.id, email: user.email };
-      const token = jwt.sign({ user: body }, 'TOP_SECRET');
-      const jsonToken = json({ token });
-
-      return res.send(jsonToken);
-    })
-  })
-]
-
+const loginUser = async (req, res) => {
+  try {
+    await passport.authenticate('local', (err, user) => {
+      if (err) {
+        return res.status(400).json({ errors: [err] });
+      }
+      if (!user) {
+        throw 'Invalid email or password';
+      } else {
+        const payload = {
+          id: user.id,
+          email: user.email,
+        };
+        const token = jwt.sign(payload, process.env.JWT_SECRET || "vmmdmcmdcmdcmdmzadqddfvbeko");
+        res.status(200).json({ token });
+      }
+    })(req, res);
+  } catch (error) {
+    res.status(400).json({ errors: [error] });
+  }
+}
+ 
 
 const profileUser = ( req, res ) => {
   res.json({
