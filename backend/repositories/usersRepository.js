@@ -8,6 +8,10 @@ const findById = (id) => {
   return User.findByPk(id);
 }
 
+const findByEmail = ( email ) => {
+  return User.findOne({ where: { email: email }});
+}
+
 const create = ( user ) => {
   let newUser = new User(user);
   return newUser.save();
@@ -35,6 +39,7 @@ const deleteUser = ( id ) => {
 module.exports = {
   findAll,
   findById,
+  findByEmail,
   create,
   updateUser,
   deleteUser

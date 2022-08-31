@@ -24,7 +24,7 @@ const User = {
 
   password: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
   },
 
   role: {
@@ -45,7 +45,10 @@ const User = {
   last_login_date: {
     type: DataTypes.DATE,
     allowNull: false
-  }
+  }, 
+
+
+  
 };
 
 module.exports = User;
