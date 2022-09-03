@@ -1,52 +1,58 @@
-const passport = require('passport');
-const bcrypt = require('bcrypt');
-const LocalStrategy = require('passport-local');
-const { ExtractJwt } = require('passport-jwt');
-const JwtStrategy = require('passport-jwt').Strategy;
+const passport = require("passport");
+const bcrypt = require("bcrypt");
+const LocalStrategy = require("passport-local");
+const { ExtractJwt } = require("passport-jwt");
+const JwtStrategy = require("passport-jwt").Strategy;
 
-const { User } = require('../models');
+const { User } = require("../models");
 
 const jwtOptions = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-  secretOrKey:  process.env.JWT_SECRET,
+  secretOrKey: process.env.JWT_SECRET,
   passReqToCallback: true,
 };
 
-passport.use(new JwtStrategy(jwtOptions, (async (req, payload, done) => {
-  try {
-    const user = await User.findByPk(payload.id);
-    console.log("User", user);
-    if (user) {
-      req.user = user;
-      done(null, user);
-    } else {
-      done(null, false);
+passport.use(
+  new JwtStrategy(jwtOptions, async (req, payload, done) => {
+    try {
+      const user = await User.findByPk(payload.id);
+      console.log("User", user);
+      if (user) {
+        req.user = user;
+        done(null, user);
+      } else {
+        done(null, false);
+      }
+    } catch (error) {
+      done(error);
     }
-  } catch (error) {
-    done(error);
-  }
-})));
+  })
+);
 
-passport.use(new LocalStrategy({
-  usernameField: 'email',
-  passwordField: 'password',
-  session: false,
-},
-(async (email, password, done) => {
-  try {
-    const user = await User.findOne({ where: { email: email } });
-    if (!user || !bcrypt.compareSync(password, user.password)) {
-      return done(null, false, { message: 'Invalid email or password' });
+passport.use(
+  new LocalStrategy(
+    {
+      usernameField: "email",
+      passwordField: "password",
+      session: false,
+    },
+    async (email, password, done) => {
+      try {
+        const user = await User.findOne({ where: { email: email } });
+        if (!user || !bcrypt.compareSync(password, user.password)) {
+          return done(null, false, { message: "Invalid email or password" });
+        }
+        return done(null, user);
+      } catch (error) {
+        done(error);
+      }
     }
-    return done(null, user);
-  } catch (error) {
-    done(error);
-  }
-})));
+  )
+);
 
 module.exports.isAuthenticated = async (req, res, next) => {
   try {
-    await passport.authenticate('jwt', (err, user) => {
+    await passport.authenticate("jwt", (err, user) => {
       if (err) {
         res.status(400).json({ errors: [err] });
       }
@@ -54,7 +60,7 @@ module.exports.isAuthenticated = async (req, res, next) => {
         req.user = user;
         next();
       } else {
-        throw 'Access denied';
+        throw "Access denied";
       }
     })(req, res, next);
   } catch (error) {
@@ -62,16 +68,16 @@ module.exports.isAuthenticated = async (req, res, next) => {
   }
 };
 
-module.exports.isLabrarian = async ( req, res, next) => {
+module.exports.isLabrarian = async (req, res, next) => {
   try {
-    await passport.authenticate('jwt', (err, user) => {
+    await passport.authenticate("jwt", (err, user) => {
       if (err) {
         res.status(400).json({ errors: [err] });
       }
-      if (user && user.role == 'librarian' || user.role == 'admin') {
+      if ((user && user.role == "librarian") || user.role == "admin") {
         next();
       } else {
-        throw 'You haven\'t permission';
+        throw "You haven't permission";
       }
     })(req, res, next);
   } catch (error) {
@@ -79,16 +85,16 @@ module.exports.isLabrarian = async ( req, res, next) => {
   }
 };
 
-module.exports.isAdmin = async ( req, res, next) => {
+module.exports.isAdmin = async (req, res, next) => {
   try {
-    await passport.authenticate('jwt', (err, user) => {
+    await passport.authenticate("jwt", (err, user) => {
       if (err) {
         res.status(400).json({ errors: [err] });
       }
-      if (user && user.role == 'admin') {
+      if (user && user.role == "admin") {
         next();
       } else {
-        throw 'You haven\'t permission';
+        throw "You haven't permission";
       }
     })(req, res, next);
   } catch (error) {

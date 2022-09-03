@@ -1,19 +1,15 @@
-const genreRepository = require('../../../repositories/genres.repository');
+const genreRepository = require("../../../repositories/genres.repository");
 
 const getGenres = async (req, res) => {
-  res.send( await genreRepository.findAllGenres());
-};
-
-const getGenreById = async (req, res) => {
-  res.send( await genreRepository.findGenreById(req.params.id));
+  res.send(await genreRepository.findAllGenres());
 };
 
 const createGenre = async (req, res) => {
-  res.send( await genreRepository.createGenre(req.body));
+  res.send(await genreRepository.createGenre(req.body));
 };
 
-const updGenre = async (req, res) => {
-  res.send( await genreRepository.updateGenre(req.body, +req.params.id));
+const updateGenre = async (req, res) => {
+  res.send(await genreRepository.updateGenre(req.body, +req.params.id));
 };
 
 const deleteGenreById = async (req, res) => {
@@ -23,8 +19,7 @@ const deleteGenreById = async (req, res) => {
 
 module.exports = {
   getGenres,
-  getGenreById,
   createGenre,
-  updGenre,
-  deleteGenreById
+  updateGenre,
+  deleteGenreById,
 };

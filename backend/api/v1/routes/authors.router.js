@@ -1,13 +1,17 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
-const { getAuthors, getAuthorById, createAuthor, updAuthor, deleteAuthorById } = require('../controllers/authors.controller');
-const { isAuthenticated } = require('../../../config/passport');
+const {
+  getAuthors,
+  createAuthor,
+  updateAuthor,
+  deleteAuthorById,
+} = require("../controllers/authors.controller");
+const { isAuthenticated, isAdmin } = require("../../../config/passport");
 
-router.get('/', getAuthors);
-router.get('/:id', getAuthorById);
-router.post('/', isAuthenticated ,createAuthor);
-router.patch('/:id', isAuthenticated , updAuthor);
-router.delete('/:id',isAuthenticated , deleteAuthorById);
+router.get("/", getAuthors);
+router.post("/", isAdmin, createAuthor);
+router.patch("/:id", isAdmin, updateAuthor);
+router.delete("/:id", isAdmin, deleteAuthorById);
 
 module.exports = router;

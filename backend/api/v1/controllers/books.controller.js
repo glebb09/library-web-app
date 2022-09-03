@@ -1,19 +1,15 @@
-const bookRepository = require('../../../repositories/books.repository'); 
+const bookRepository = require("../../../repositories/books.repository");
 
-const getBook = async ( req, res ) => {
-  res.send( await bookRepository.findAllBooks());
-};
-
-const getBookById = async(req, res) => {
-  res.send( await bookRepository.findBookById(req.params.id));
+const getBook = async (req, res) => {
+  res.send(await bookRepository.findAllBooks());
 };
 
 const createBook = async (req, res) => {
-  res.send( await bookRepository.createBook(req.body));
+  res.send(await bookRepository.createBook(req.body));
 };
 
-const updBook = async (req, res) => {
-  res.send( await bookRepository.updateBook(req.body, +req.params.id));
+const updateBook = async (req, res) => {
+  res.send(await bookRepository.updateBook(req.body, +req.params.id));
 };
 
 const deleteBookById = async (req, res) => {
@@ -23,9 +19,7 @@ const deleteBookById = async (req, res) => {
 
 module.exports = {
   getBook,
-  getBookById,
   createBook,
-  updBook,
-  deleteBookById
+  updateBook,
+  deleteBookById,
 };
-

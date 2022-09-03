@@ -1,26 +1,25 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes } = require("sequelize");
 
 const Book = {
-
   name: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
   },
 
   description: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
   },
 
   publishing_year: {
     type: DataTypes.DATE,
-    allowNull: false
+    allowNull: false,
   },
 
   pages_count: {
     type: DataTypes.INTEGER,
-    allowNull: false
-  }
-}
+    allowNull: false,
+  },
+};
 
 module.exports = Book;

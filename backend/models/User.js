@@ -1,25 +1,24 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes } = require("sequelize");
 
 const User = {
-
   first_name: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
   },
 
   last_name: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
   },
 
   middle_name: {
     type: DataTypes.STRING,
-    allowNull: true
+    allowNull: true,
   },
 
   email: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
   },
 
   password: {
@@ -28,22 +27,19 @@ const User = {
   },
 
   role: {
-    type: DataTypes.ENUM('admin', 'librarian', 'visitor'),                  
-    allowNull: false
+    type: DataTypes.ENUM("admin", "librarian", "visitor"),
+    allowNull: false,
   },
 
   email_confirm_hash: {
     type: DataTypes.STRING,
-    allowNull: true
+    allowNull: true,
   },
 
   last_login_date: {
     type: DataTypes.DATE,
-    allowNull: true
-  }, 
-
-
-  
+    allowNull: true,
+  },
 };
 
 module.exports = User;

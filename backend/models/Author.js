@@ -1,22 +1,20 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes } = require("sequelize");
 
 const Author = {
-
   first_name: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
   },
 
   last_name: {
     type: DataTypes.STRING,
-    allowNull: true
+    allowNull: true,
   },
 
   middle_name: {
     type: DataTypes.STRING,
-    allowNull: true 
-  }
-
+    allowNull: true,
+  },
 };
 
 module.exports = Author;

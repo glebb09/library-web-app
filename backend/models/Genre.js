@@ -1,11 +1,10 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes } = require("sequelize");
 
 const Genre = {
-
   name: {
     type: DataTypes.STRING,
-    allowNull: false
-  }
-}
+    allowNull: false,
+  },
+};
 
 module.exports = Genre;

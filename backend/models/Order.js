@@ -1,22 +1,20 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes } = require("sequelize");
 
 const Order = {
-
   order_date: {
-    type: DataTypes.DATE,           // this, with time zone
-    //defaultValue: DataTypes.TIME,
-    allowNull: false
+    type: DataTypes.DATE,
+    allowNull: false,
   },
 
   return_date: {
     type: DataTypes.DATE,
-    allowNull: true
+    allowNull: true,
   },
 
   note: {
     type: DataTypes.STRING,
-    allowNull: true
-  }
-}
+    allowNull: true,
+  },
+};
 
 module.exports = Order;

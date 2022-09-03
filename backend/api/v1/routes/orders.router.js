@@ -1,12 +1,20 @@
-const router = require('express').Router();
+const router = require("express").Router();
 
-const { getOrders, getOrderById, createOrder, updOrder, deleteOrderById } = require('../controllers/orders.controller');
-const { isAuthenticated, isLabrarian, isAdmin } = require('../../../config/passport');
+const {
+  getOrders,
+  createOrder,
+  updateOrder,
+  deleteOrderById,
+} = require("../controllers/orders.controller");
+const {
+  isAuthenticated,
+  isLabrarian,
+  isAdmin,
+} = require("../../../config/passport");
 
-router.get('/', getOrders);
-router.get('/:id', getOrderById);
-router.post('/', isAuthenticated, isLabrarian, createOrder);
-router.patch('/:id', isAuthenticated, updOrder);
-router.delete('/:id', isAuthenticated, deleteOrderById);
+router.get("/", isLabrarian, getOrders);
+router.post("/", isLabrarian, createOrder);
+router.patch("/:id", isLabrarian, updateOrder);
+router.delete("/:id", isAuthenticated, deleteOrderById);
 
 module.exports = router;
