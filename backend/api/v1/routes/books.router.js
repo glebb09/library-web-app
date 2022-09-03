@@ -5,13 +5,9 @@ const { isAuthenticated } = require('../../../config/passport');
 
 
 router.get('/', getBook);
-
 router.get('/:id', getBookById);
-
 router.post('/', isAuthenticated ,createBook);
-
 router.patch('/:id', isAuthenticated ,updBook);
-
 router.delete('/:id', isAuthenticated ,deleteBookById);
 
 module.exports = router;

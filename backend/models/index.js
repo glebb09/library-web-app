@@ -31,8 +31,8 @@ Author.belongsToMany(Book, { through: "books_authors" });
 User.hasMany(Order);
 Order.belongsTo(User);
 
-Order.hasMany(Book);
-Book.belongsTo(Order);
+Order.belongsTo(Book);
+Book.hasMany(Order);
 
 sequelize.sync({ force: false });
 

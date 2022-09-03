@@ -1,31 +1,30 @@
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 
-const { findAll, findById, findByEmail, create, updateUser, deleteUser } = require('../../../repositories/users.repository');
-const { json } = require('body-parser');
+const usersRepository = require('../../../repositories/users.repository');
 
 const getUsers = async (req, res) => {
-  res.send( await findAll());
+  res.send( await usersRepository.findAllUsers());
 };
-
-const getUserById = async (req, res) => {
-  res.send( await findById(req.params.id))
-}
 
 const createUser = async (req, res) => {
 
-  if (await findByEmail(req.body.email)) res.send({ message: "User with email already exist" });
+  if (await usersRepository.findUserByEmail(req.body.email)) res.send({ message: "User with email already exist" });
 
-  const { first_name, last_name, middle_name, email } = await create(req.body)
+  const { first_name, last_name, middle_name, email } = await usersRepository.createUser(req.body)
   res.send({  first_name, last_name, middle_name, email });
 }
 
-const updUser = async (req, res) => {
-  res.send( await updateUser(req.body, +req.params.id));
+const updateUser = async (req, res) => {
+  res.send( await usersRepository.updateUser(req.body, +req.params.id));
+}
+
+const updateSelf = async (req, res) => {
+  res.send( await usersRepository.updateUser(req.body, req.user.id));
 }
 
 const deleteUserById = async(req, res) => {
-  const result =  await deleteUser(+req.params.id);
+  const result =  await usersRepository.deleteUser(+req.params.id);
   res.send(result == 0 ? 204 : 200);
 }
 
@@ -52,21 +51,12 @@ const loginUser = async (req, res) => {
 }
  
 
-const profileUser = ( req, res ) => {
-  res.json({
-    message: 'You made it to the secure route',
-    user: req.user,
-    token: req.quety.secret_token
-  })
-};
-
 
 module.exports = {
   getUsers,
-  getUserById,
   createUser,
-  updUser,
+  updateUser,
+  updateSelf,
   deleteUserById,
   loginUser,
-  profileUser
 };

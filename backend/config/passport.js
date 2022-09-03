@@ -51,6 +51,7 @@ module.exports.isAuthenticated = async (req, res, next) => {
         res.status(400).json({ errors: [err] });
       }
       if (user) {
+        req.user = user;
         next();
       } else {
         throw 'Access denied';

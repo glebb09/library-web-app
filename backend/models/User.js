@@ -37,14 +37,9 @@ const User = {
     allowNull: true
   },
 
-  registration_date: {
-    type: DataTypes.DATE,
-    allowNull: false
-  },
-
   last_login_date: {
     type: DataTypes.DATE,
-    allowNull: false
+    allowNull: true
   }, 
 
 

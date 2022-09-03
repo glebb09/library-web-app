@@ -1,14 +1,14 @@
 const { Genre } = require('../models');
 
-const findAll = () => {
+const findAllGenres = () => {
   return Genre.findAll();
 };
 
-const findById = ( id ) => {
+const findGenreById = ( id ) => {
   return Genre.findByPk(id);
 };
 
-const create = ( genre ) => {
+const createGenre = ( genre ) => {
   let newGenre = new Genre(genre);
   return newGenre.save();
 };
@@ -26,9 +26,9 @@ const deleteGenre = ( id ) => {
 };
 
 module.exports = {
-  findAll,
-  findById,
-  create,
+  findAllGenres,
+  findGenreById,
+  createGenre,
   updateGenre,
   deleteGenre
 };

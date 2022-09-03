@@ -1,14 +1,14 @@
 const { Book } = require('../models');
 
-const findAll = () => {
+const findAllBooks = () => {
   return Book.findAll();
 }
 
-const findById = ( id ) => {
+const findBookById = ( id ) => {
   return Book.findByPk( id );
 }
 
-const create = ( book ) => {
+const createBook = ( book ) => {
   let newBook = new Book(book);
   return newBook.save();
 }
@@ -29,9 +29,9 @@ const deleteBook = ( id ) => {
 }
 
 module.exports = {
-  findAll,
-  findById,
-  create,
+  findAllBooks,
+  findBookById,
+  createBook,
   updateBook,
   deleteBook
 };

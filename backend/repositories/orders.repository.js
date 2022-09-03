@@ -1,14 +1,14 @@
 const { Order } = require('../models');
 
-const findAll = () => {
+const findAllOrders = () => {
   return Order.findAll();
 };
 
-const findById = (id) => {
+const findOrderById = (id) => {
   return Order.findByPk(id);
 };
 
-const create = ( order ) => {
+const createOrder = ( order ) => {
   let newOrder = new Order(order);
   return newOrder.save();
 };
@@ -28,9 +28,9 @@ const deleteOrder = ( id ) => {
 };
 
 module.exports = {
-  findAll,
-  findById,
-  create,
+  findAllOrders,
+  findOrderById,
+  createOrder,
   updateOrder,
   deleteOrder
 };

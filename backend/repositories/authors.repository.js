@@ -1,18 +1,18 @@
 const { Author } = require('../models');
 
-const findAll = () => {
+const findAllAuthors = () => {
   return Author.findAll();
 }
 
-const findById = ( id ) => {
+const findAuthorById = ( id ) => {
   return Author.findByPk(id);
 }
 
-const deleteById = ( id ) => {
+const deleteAuthorById = ( id ) => {
   return Author.destroy({ where: {id: id} });
 }
 
-const create = ( author ) => {
+const createAuthor = ( author ) => {
   let newAuthor = new Author(author);
   return newAuthor.save();
 }
@@ -28,9 +28,9 @@ const updateAuthor = ( author, id) => {
 }
 
 module.exports = {
-  findAll,
-  findById,
-  deleteById,
-  create,
+  findAllAuthors,
+  findAuthorById,
+  deleteAuthorById,
+  createAuthor,
   updateAuthor
 };

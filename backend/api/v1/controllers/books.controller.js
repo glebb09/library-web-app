@@ -1,23 +1,23 @@
-const { findAll, findById, create, updateBook, deleteBook } = require('../../../repositories/books.repository'); 
+const bookRepository = require('../../../repositories/books.repository'); 
 
 const getBook = async ( req, res ) => {
-  res.send( await findAll());
+  res.send( await bookRepository.findAllBooks());
 };
 
 const getBookById = async(req, res) => {
-  res.send( await findById(req.params.id));
+  res.send( await bookRepository.findBookById(req.params.id));
 };
 
 const createBook = async (req, res) => {
-  res.send( await create(req.body));
+  res.send( await bookRepository.createBook(req.body));
 };
 
 const updBook = async (req, res) => {
-  res.send( await updateBook(req.body, +req.params.id));
+  res.send( await bookRepository.updateBook(req.body, +req.params.id));
 };
 
 const deleteBookById = async (req, res) => {
-  const result = await deleteBook(+req.params.id);
+  const result = await bookRepository.deleteBook(+req.params.id);
   res.send(result == 0 ? 204 : 200);
 };
 
