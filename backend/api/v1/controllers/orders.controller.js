@@ -9,6 +9,8 @@ const getOrderById = async (req, res) => {
 };
 
 const createOrder = async ( req, res ) => {
+  console.log("Role user", req);
+  
   res.send( await create(req.body));
 };
 

@@ -15,6 +15,7 @@ const jwtOptions = {
 passport.use(new JwtStrategy(jwtOptions, (async (req, payload, done) => {
   try {
     const user = await User.findByPk(payload.id);
+    console.log("User", user);
     if (user) {
       req.user = user;
       done(null, user);
@@ -33,7 +34,7 @@ passport.use(new LocalStrategy({
 },
 (async (email, password, done) => {
   try {
-    const user = await User.findOne({ where: { email } });
+    const user = await User.findOne({ where: { email: email } });
     if (!user || !bcrypt.compareSync(password, user.password)) {
       return done(null, false, { message: 'Invalid email or password' });
     }
@@ -53,6 +54,40 @@ module.exports.isAuthenticated = async (req, res, next) => {
         next();
       } else {
         throw 'Access denied';
+      }
+    })(req, res, next);
+  } catch (error) {
+    res.status(400).json({ errors: [error] });
+  }
+};
+
+module.exports.isLabrarian = async ( req, res, next) => {
+  try {
+    await passport.authenticate('jwt', (err, user) => {
+      if (err) {
+        res.status(400).json({ errors: [err] });
+      }
+      if (user && user.role == 'librarian' || user.role == 'admin') {
+        next();
+      } else {
+        throw 'You haven\'t permission';
+      }
+    })(req, res, next);
+  } catch (error) {
+    res.status(400).json({ errors: [error] });
+  }
+};
+
+module.exports.isAdmin = async ( req, res, next) => {
+  try {
+    await passport.authenticate('jwt', (err, user) => {
+      if (err) {
+        res.status(400).json({ errors: [err] });
+      }
+      if (user && user.role == 'admin') {
+        next();
+      } else {
+        throw 'You haven\'t permission';
       }
     })(req, res, next);
   } catch (error) {
