@@ -2,6 +2,7 @@ const passport = require("passport");
 const jwt = require("jsonwebtoken");
 
 const usersRepository = require("../../../repositories/users.repository");
+const { email } = require("../../../models/User");
 
 const getUsers = async (req, res) => {
   res.send(await usersRepository.findAllUsers());
@@ -21,7 +22,7 @@ const updateUser = async (req, res) => {
 };
 
 const updateSelf = async (req, res) => {
-  res.send(await usersRepository.updateUser(req.body, req.user.id));
+  res.send(await usersRepository.updateUser(req.body, req.body.id));
 };
 
 const deleteUserById = async (req, res) => {
@@ -42,8 +43,9 @@ const loginUser = async (req, res) => {
           id: user.id,
           email: user.email,
         };
+        const { first_name, last_name, middle_name , email, id } = user;
         const token = jwt.sign(payload, process.env.JWT_SECRET);
-        res.status(200).json({ token });
+        res.status(200).json({first_name, last_name, middle_name , email, id ,token });
       }
     })(req, res);
   } catch (error) {

@@ -1,0 +1,47 @@
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding-inline: 1ch;
+  padding-inline-end: 2ch;
+  padding-block: .5ch;
+
+  margin-inline-end: 1ch;
+
+  background: hsl(0 0% 95%);
+  border-radius: 50px;
+
+  cursor: pointer;
+
+  transition: background .2s ease-in;
+
+  &:hover {
+    background: hsl(0 0% 90%);
+  }
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  
+  margin-inline-end: 1ch;
+}
+
+.rightInfo {
+  display: flex;
+  flex-direction: column;
+
+  .name {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .email {
+    font-size: 14px;
+    font-weight: 600;
+
+    color: hsl(0 0% 50% / 50%);
+  }
+}

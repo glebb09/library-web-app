@@ -1,0 +1,76 @@
+
+.input {
+  color: hsl(210 10 30);
+
+  background: hsl(0 0 100);
+  border: 1px solid hsl(210 14 89);
+
+  padding-block: 1ch;
+  padding-inline-start: 1ch;
+  padding-inline-end: 2rem;
+
+  font-family: inherit;
+  font-size: 16px;
+
+  margin-block-end: 1rem;
+
+  &:focus {
+    border-color: hsl(228 94% 67%);
+    //outline-offset: 1px;
+    outline-style: none;
+    border-width: 1px;
+
+    //box-shadow: 0 0 2px 1px rgba(59, 153, 252, .7);
+    box-shadow: 0 0 2px 2px hsl(217 89 93);
+
+  }
+  
+}
+
+.containerField {
+  position: relative;
+
+  display: grid;
+  
+  .icon {
+    position: absolute;
+    top: 1.85rem;
+    right: 6px;
+
+    width: 18px;
+    height: 18px;
+
+    transition: box-shadow .2s ease;
+    border-radius: 6px;
+    cursor: pointer;
+
+
+    &:hover {
+      box-shadow: 0 2px 20px hsla(228, 66%, 45%, .15);
+    }
+  }
+}
+
+/*
+    cursor: pointer;
+    touch-action: manipulation;
+
+    font-size: var(--_size, 1rem);
+    font-weight: 700;
+    background: var(--_bg);
+    color: var(--_text);
+    border: 2px solid var(--_border);
+
+    box-shadow:
+        var(--_shadow-2),
+        var(--_shadow-depth),
+        0 0 0 var(--_highlight-size) var(--_highlight);
+
+    text-shadow: var(--_ink-shadow);
+
+    box-shadow:
+        -5px 5px 10px -2px hsl(228 94% 67%),
+          0 7px 14px -5px hsl(228 94% 67%),
+              0 1px  hsl(210 14% 89%),
+              0 0 0 0 hsl(210 10% 71% / 25%);
+*/

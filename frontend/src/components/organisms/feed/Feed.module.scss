@@ -1,0 +1,19 @@
+
+.container {
+  //border: 1px solid red;
+  
+  min-inline-size: 40ch;
+
+  margin: 0 auto;
+
+  margin-inline-start: 1rem;
+  padding-block-start: 1ch;
+
+  &[state="close"] {
+    display: none;
+  }
+}
+
+.buttonSave {
+  text-align: right;
+}

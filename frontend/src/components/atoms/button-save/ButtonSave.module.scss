@@ -1,0 +1,32 @@
+
+.button {
+
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 700;
+
+  padding-block: .75ch;
+  padding-inline: 1.75ch;
+
+  line-height: 1.5;
+
+  color: hsl(228 89% 100%);
+
+  border-radius: .5ch;
+  border: hsl(228 89% 63%);
+  background: linear-gradient(hsl(228 94% 67%), hsl(228 81% 59%));
+
+  outline-color: hsl(228 89% 63%);
+  outline-offset: 5px;
+
+  cursor: pointer;
+  touch-action: manipulation;
+
+  &:hover {
+    background: linear-gradient(hsl(228 94% 63%), hsl(228 81% 58%));
+  }
+
+  &:active, :focus {
+    background: linear-gradient(hsl(228 94% 61%), hsl(228 81% 56%));
+  }
+}

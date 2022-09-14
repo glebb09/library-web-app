@@ -1,0 +1,44 @@
+
+.button {
+  appearance: none;
+  user-select: none;
+  border: none;
+  background: transparent;
+
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 600;
+
+  border: 1px solid hsl(201 100 35);
+  color: hsl(228 94% 67%);
+
+  padding-block: 1ch;
+  padding-inline: 2ch;
+
+  letter-spacing: 1px;
+
+  border-radius: 25px;
+
+  cursor: pointer;
+
+  transition: background .2s ease-in;
+
+  &:hover {
+    //background: hsl(201 100 40);
+    background:hsl(228 94% 67%);
+    color: hsl(0 0 98);
+  }
+}
+
+.button.login {
+  border: none;
+
+  margin-inline-end: .5ch;
+
+}
+
+@media (max-width: 767px) {
+  .button {
+    display: none;
+  }
+}

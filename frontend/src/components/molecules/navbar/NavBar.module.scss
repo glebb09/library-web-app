@@ -1,0 +1,153 @@
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding-block: 0;
+  position: sticky;
+  top: 0;
+
+  background: hsl(0 0 100);
+  border-bottom: 1px solid hsl(240 10% 94%);
+  z-index: 100;
+
+  grid-area: header;
+
+  margin-block: 1ch;
+
+  .home {
+
+    font-size: 18px;
+    font-weight: 600;
+
+    padding-block: 1ch;
+    padding-inline: 2ch;
+
+    border-radius: 10px;
+
+    transition: background .2s ease-in;
+
+    &:hover {
+      background: hsl(0 0% 95%);
+    }
+
+    
+  }
+}
+
+@supports (backdrop-filter: blur(10px)) {
+  .container {
+    background-color: hsl(0 0 100 / 80%);
+    backdrop-filter: blur(10px);
+
+    &[data-color="black"] {
+      background-color: hsl(215 10% 10% / 80%);
+      backdrop-filter: blur(10px);
+
+      //border-bottom: 1px solid hsl(215 10% 15%);
+      border: none;
+    }
+  }
+
+}
+
+.miniContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;                              // из-за этого все расстягивается 
+    
+    max-width: 1024px;
+
+    padding-block-end: 1ch;
+
+    .homeIcon {
+      width: 40px;
+      height: 40px;
+
+    }
+  
+}
+
+.rightInfo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .exitIcon {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/*
+ background: hsl(0 0% 95%);
+  transition: all .3s ease-in;
+
+  cursor: pointer;
+  margin: .5rem;
+
+  &:hover {
+    background: hsl(0 0% 90%);
+  }
+
+  &:active, :focus {
+    background: hsl(0 0% 88%);
+  }
+  
+  &[data-color="black"] {
+    background: hsl(215 10% 15%);
+    color: white;
+*/
+
+@media (min-width: 767px) {
+
+  .homeIcon{
+    display: none;
+  }
+
+  .exitIcon {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .home {
+    display: none;
+  }
+
+  .homeIcon {
+    margin-inline-start: 1rem;
+
+    padding: .5ch;
+
+    border-radius: 50px;
+
+    transition: background .2s ease;
+    cursor: pointer;
+
+    &:hover {
+      background: hsl(0 0% 95%);
+    }
+    
+  }
+
+  .exitIcon {
+    margin-inline-end: 1rem;
+
+    padding: .5ch;
+
+    border-radius: 50px;
+
+    transition: background .2s ease;
+    cursor: pointer;
+
+    &:hover {
+      //background: hsl(201 100 40);
+      background: linear-gradient(hsl(228 94% 67%), hsl(228 81% 59%));
+      color: hsl(0 0 98);
+    }
+  }
+}

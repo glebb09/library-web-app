@@ -35,7 +35,8 @@ const updateUser = (user, id) => {
     middle_name: middle_name,
   };
 
-  return User.update(updUser, { where: { id: id } });
+  User.update(updUser, { where: { id: id } });
+  return User.findByPk(id);
 };
 
 const deleteUser = (id) => {

@@ -1,0 +1,142 @@
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 100vh;
+
+  h3 {
+    text-align: center;
+  }
+}
+
+.form {
+  display: grid;
+  gap: 1ch;
+
+  //background: hsl(202 36 96);
+  border: 1px solid hsl(240 10% 94%);
+
+
+  min-inline-size: 40ch;
+
+  border-radius: 10px;
+
+  padding-block-end: 1.5rem;
+  padding-inline: 1.5ch;
+}
+
+/*
+.input {
+  appearance: none;
+  user-select: none;
+  border: none;
+
+  font-family: inherit;
+  font-weight: 550;
+  
+  letter-spacing: .5px;
+
+  background: hsl(0 0 98);
+  border: 2px solid hsl(202 30 70);
+  border-radius: 5px;
+
+  padding-block: 1ch;
+
+  &:focus {
+    outline-color: hsl(201 100 40);;
+  }
+}
+*/
+
+.input {
+  color: hsl(210 10 30);
+
+  background: hsl(0 0 100);
+  border: 1px solid hsl(210 14 89);
+  border-radius: .5rem;
+
+  padding-block: 1ch;
+  padding-inline-start: 1ch;
+  padding-inline-end: 2rem;
+
+  font-family: inherit;
+  font-size: 16px;
+
+  //margin-block-end: 1rem;
+
+  &:focus {
+    border-color: hsl(228 94% 67%);
+    //outline-offset: 1px;
+    outline-style: none;
+    border-width: 1px;
+
+    //box-shadow: 0 0 2px 1px rgba(59, 153, 252, .7);
+    box-shadow: 0 0 2px 2px hsl(217 89 93);
+
+  }
+  
+}
+
+.button {
+
+  appearance: none;
+  user-select: none;
+  border: none;
+
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
+
+  background: hsl(201 100 40);
+  color: hsl(0 0 98);
+
+  padding-block: 1ch;
+  border-radius: 50px;
+
+  margin-block-start: 1rem;
+
+  transition: background .2s ease-in;
+
+  cursor: pointer;
+
+  &:hover {
+    background:hsl(201 98 38);
+  }
+
+  &:is(:active, :focus) {
+    background: hsl(201 96 36);
+  }
+
+}
+
+.button {
+
+  appearance: none;
+  user-select: none;
+  border: none;
+
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
+
+  background: hsl(201 100 40);
+  color: hsl(0 0 98);
+
+  padding-block: 1ch;
+  border-radius: 50px;
+
+  margin-block-start: 1rem;
+
+  cursor: pointer;
+
+}
+
+.label {
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 550;
+}

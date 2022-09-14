@@ -1,0 +1,182 @@
+
+.containerSide {
+  display: flex;
+  //margin-inline-start: 1rem;
+  align-items: center;
+  justify-content: space-around;
+
+  border: 1px solid #EBECF1;
+  border-radius: .5rem;
+
+  //max-inline-size: 40ch;
+
+  margin: 0 auto;
+  margin-block-start: 2rem;
+
+}
+
+.sideIcon {
+
+  display: flex;
+  align-items: center;
+  justify-content: start;
+
+  padding-block: 1ch;
+  padding-inline: 2ch;
+
+  //margin-block: 1ch;
+  //margin-inline: 1ch;
+
+  //border: 1px solid blue;
+  //border-radius: 50px;
+  &:not(:nth-last-child(1)) {
+    border-right: 1px solid #EBECF1;
+  }
+  transition: background .2s ease;
+
+  cursor: pointer;
+
+  &:hover {
+    background: hsl(0 0% 95%);
+  }
+
+  .icon {
+    width: 28px;
+    height: 28px;
+
+    //background: hsl(0 0% 90%);
+    border-radius: 50px;
+    /*
+    box-shadow: 
+      0 10px 15px -3px rgb(0 0 0 / 0.1), 
+      0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+    */
+  }
+
+  .sideTooltip {
+    appearance: none;
+    user-select: none;
+
+    font-size: 16px;
+
+    //margin-inline-start: 1ch;
+    //border: 1px solid red;
+  }
+  
+}
+
+.sideIconActive {
+
+  padding-block: 1ch;
+  padding-inline: 2ch;
+
+  background: hsl(0 0% 95%);
+
+  .icon {
+    width: 28px;
+    height: 28px;
+
+    border-radius: 50px;
+  }
+
+}
+
+.side {
+  border-right: 1px solid #EBECF1;
+}
+
+
+@media (max-width: 1024px) {
+
+
+  .sideIcon {
+    padding-block: .5ch;
+    padding-inline: 2ch;
+
+
+    .sideTooltip {
+      display: none;
+    }
+  }
+
+  .sideIconActive {
+    padding-block: .5ch;
+    padding-inline: 2ch;
+
+
+    .sideTooltip {
+      display: none;
+    }
+
+  }
+ 
+}
+
+@media (min-width: 1023px) {
+  .icon {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .containerSide {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+
+    position: fixed;
+    bottom: 1rem;
+
+    /*
+    box-shadow: 
+      0 10px 15px -3px rgb(0 0 0 / 0.1), 
+      0 4px 6px -4px rgb(0 0 0 / 0.1);
+    */
+
+    box-shadow: 0 6px 20px hsla(228, 66%, 45%, .15);
+    background: hsl(0 0 100);
+
+    width: 90%;
+    left: 0;
+    right: 0;
+
+    margin: 0 auto;
+
+    padding-block: 1ch;
+    padding-inline: .5ch;
+
+    border-radius: 1rem;
+
+    z-index: 1000;
+  }
+
+  .sideIcon {
+    margin: 0;
+
+    padding-block: .5ch;
+    padding-inline: .5ch;
+
+    border-style: none;
+
+    border-radius: 50px;
+  }
+
+  .sideIconActive {
+    margin: 0;
+
+    padding-block: .5ch;
+    padding-inline: .5ch;
+
+    border-style: none;
+
+    border-radius: 50px;
+
+    .sideTooltip {
+      display: none;
+    }
+  }
+
+}
